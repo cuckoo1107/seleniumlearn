@@ -22,17 +22,22 @@ pigcms.find_element_by_xpath("//*[@id='side-menu']/li[5]/ul/li[1]/a/span").click
 time.sleep(3)
 
 
-card_is = pigcms.find_element_by_xpath("//*[@id='page-wrapper']/div[2]/div[1]/ol/li[3]/strong").text
+card_is = pigcms.find_element_by_xpath("//*[@id='wrapper-content-list']/div/div/div[1]/div/div[1]/span[2]").text
+
 card_text = card_is.encode('utf8')
-print("会员卡详情：{}".format(card_text))
+print("会员卡状态：{}".format(card_text))
 
 if card_is:
     print("删除会员卡")
-    pigcms.find_element_by_xpath("/// *[ @ id = 'cardDel'] / strong").click()
+
+    pigcms.find_element_by_xpath("// *[ @ id = 'cardDel'] / strong").click()
+    # 确定删除/ html / body / div[15] / div[7] / div / button
+    pigcms.find_element_by_xpath("/ html / body / div[15] / div[7] / div / button").click()
+
+       #取消删除/html/body/div[15]/div[7]/button
 
 else:
-    print("创建会员卡")
-
+          print("创建员卡")
 
 pigcms.find_element_by_xpath("//*[@id='cost_money_unit']").send_keys("10")
 
